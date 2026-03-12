@@ -1,6 +1,6 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 
-import { DashboardService } from '../../services/Dashboars.service';
+import { DashboardService } from '../../services/Dashboard.service';
 import { IUser } from '../../interfaces/IUser';
 import { IDashboardCourse } from '../../interfaces/IDashboard';
 import { ICourseFilters } from '../../interfaces/IFilters';
@@ -12,6 +12,7 @@ import { CategoryTicker } from '../../components/category-ticker/category-ticker
 import { TrustedBrands } from '../../components/trusted-brands/trusted-brands';
 import { CourseFilters } from '../../components/course-filters/course-filters';
 import { Location } from '@angular/common';
+import { SkeletonModule } from 'primeng/skeleton';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,7 +23,8 @@ import { Location } from '@angular/common';
     CourseSection,
     TrustedBrands,
     CategoryTicker,
-    CourseFilters
+    CourseFilters,
+    SkeletonModule  
   ],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css'
@@ -41,6 +43,7 @@ export class Dashboard implements OnInit {
   filteredCourses = signal<IDashboardCourse[]>([]);
 
   showFilters = signal<boolean>(false);
+  isLoading = signal<boolean>(true);
 
   categories = signal<string[]>([
     'Design',
@@ -65,6 +68,7 @@ export class Dashboard implements OnInit {
     this.recommendedCourses.set(data.what_to_learn_next);
     this.allCourses.set(data.all_courses);
     this.filteredCourses.set(data.all_courses);
+    this.isLoading.set(false);
   }
 
   scrollToRecommended(): void {

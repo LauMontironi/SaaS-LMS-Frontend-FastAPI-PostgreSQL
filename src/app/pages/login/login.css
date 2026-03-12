@@ -1,56 +1,94 @@
+:host {
+    display: block;
+    min-height: 100vh;
+}
+
 .auth-page {
     min-height: 100vh;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 32px;
-    background-image: url('/assets/fondologinregistro.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    padding: 24px;
+    background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 50%, #f5f3ff 100%);
+    position: relative;
 }
 
-.auth-card-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 520px;
+.auth-page::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.08) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 .back-btn {
     position: absolute;
-    left: -78px;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 24px;
+    left: 24px;
     border: none;
     border-radius: 999px;
-    padding: 10px 16px;
+    padding: 10px 18px;
     background: white;
     color: #0f172a;
-    font-weight: 700;
+    font-weight: 600;
+    font-size: 0.9rem;
     cursor: pointer;
-    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: 0.2s ease;
+    z-index: 10;
+}
+
+.back-btn:hover {
+    background: #f1f5f9;
+    transform: translateY(-1px);
 }
 
 .auth-container {
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(4px);
-    border-radius: 28px;
-    padding: 40px 36px;
-    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.22);
+    width: 100%;
+    max-width: 480px;
+    padding: 44px 40px;
+    border-radius: 24px;
+    background: white;
+    box-shadow:
+        0 4px 6px rgba(0, 0, 0, 0.04),
+        0 20px 40px rgba(15, 23, 42, 0.1);
+    position: relative;
+    z-index: 1;
 }
 
-.auth-container h1 {
-    margin: 0 0 10px;
-    font-size: 2.3rem;
-    font-weight: 800;
-    color: #1e3a8a;
+.auth-logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.auth-logo-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+h1 {
+    margin: 0 0 8px;
     text-align: center;
+    font-size: 1.9rem;
+    font-weight: 800;
+    color: #0f172a;
 }
 
 .auth-subtitle {
-    margin: 0 0 24px;
+    margin: 0 0 32px;
     text-align: center;
-    color: #334155;
+    color: #64748b;
+    font-size: 0.97rem;
 }
 
 form {
@@ -62,29 +100,56 @@ form {
 .form-field {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
 }
 
-.form-field label {
-    font-weight: 700;
-    color: #1e3a8a;
+label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #334155;
 }
 
-.form-field input {
+input {
     width: 100%;
-    border: 2px solid #bfd0f3;
-    border-radius: 999px;
-    padding: 14px 18px;
+    height: 50px;
+    padding: 0 16px;
+    border-radius: 12px;
+    border: 1.5px solid #e2e8f0;
+    background: #f8fafc;
+    font-size: 0.97rem;
+    color: #0f172a;
+    outline: none;
+    transition: 0.2s ease;
+    box-sizing: border-box;
+}
+
+input::placeholder {
+    color: #94a3b8;
+}
+
+input:focus {
+    border-color: #2563eb;
     background: white;
-    font: inherit;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+input.ng-invalid.ng-touched {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.08);
+}
+
+input.ng-valid.ng-touched {
+    border-color: #22c55e;
 }
 
 .password-wrapper {
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .password-wrapper input {
-    padding-right: 84px;
+    padding-right: 52px;
 }
 
 .toggle-password {
@@ -94,76 +159,63 @@ form {
     transform: translateY(-50%);
     border: none;
     background: transparent;
-    color: #0f172a;
-    font-weight: 500;
     cursor: pointer;
-}
-
-.auth-btn {
-    border: none;
-    border-radius: 12px;
-    padding: 12px 16px;
-    background: #1d4ed8;
-    color: white;
-    font-weight: 700;
-    cursor: pointer;
-    margin-top: 8px;
-}
-
-@media (max-width: 768px) {
-    .back-btn {
-        position: static;
-        transform: none;
-        margin-bottom: 14px;
-    }
-
-    .auth-card-wrapper {
-        max-width: 100%;
-    }
-}
-
-.password-wrapper {
-    position: relative;
-}
-
-.password-wrapper input {
-    padding-right: 48px;
-}
-
-.toggle-password {
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    font-size: 18px;
-    color: #475569;
+    font-size: 1rem;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    padding: 0;
 }
 
 .toggle-password:hover {
-    color: #1e3a8a;
+    color: #2563eb;
 }
 
-.back-btn {
-    position: absolute;
-    left: 30px;
-    top: 150px;
-
+.auth-btn {
+    margin-top: 8px;
+    height: 52px;
     border: none;
-    border-radius: 999px;
-    padding: 10px 16px;
-
-    background: white;
-    color: #0f172a;
-    font-weight: 600;
-
+    border-radius: 12px;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
     cursor: pointer;
-
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    transition: 0.2s ease;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
 }
 
-.back-btn:hover {
-    background: #f1f5f9;
+.auth-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+}
+
+.auth-btn:disabled {
+    background: #94a3b8;
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.auth-footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+.auth-footer a {
+    color: #2563eb;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 520px) {
+    .auth-container {
+        padding: 32px 24px;
+    }
 }

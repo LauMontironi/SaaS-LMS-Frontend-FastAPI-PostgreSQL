@@ -6,7 +6,50 @@
 
     @if (isLoading()) {
     <div class="course-detail-page">
-        <p>Loading course...</p>
+
+        <div class="skeleton-hero">
+            <div class="skeleton-hero-copy">
+                <p-skeleton width="100px" height="12px"></p-skeleton>
+                <p-skeleton width="80%" height="40px"></p-skeleton>
+                <p-skeleton width="100%" height="16px"></p-skeleton>
+                <p-skeleton width="90%" height="16px"></p-skeleton>
+                <div style="display:flex; gap:10px; margin-bottom:20px">
+                    <p-skeleton width="80px" height="32px" borderRadius="20px"></p-skeleton>
+                    <p-skeleton width="80px" height="32px" borderRadius="20px"></p-skeleton>
+                    <p-skeleton width="80px" height="32px" borderRadius="20px"></p-skeleton>
+                </div>
+                <p-skeleton width="140px" height="42px" borderRadius="999px"></p-skeleton>
+            </div>
+            <p-skeleton width="100%" height="260px" borderRadius="18px"></p-skeleton>
+        </div>
+
+        <div class="skeleton-content-layout">
+            <div>
+                <p-skeleton width="200px" height="28px"></p-skeleton>
+                @for (item of [1,2,3,4]; track item) {
+                <div class="skeleton-lesson">
+                    <p-skeleton shape="circle" size="40px"></p-skeleton>
+                    <div style="flex:1">
+                        <p-skeleton width="70%" height="16px"></p-skeleton>
+                        <p-skeleton width="50%" height="13px"></p-skeleton>
+                    </div>
+                    <p-skeleton width="60px" height="28px" borderRadius="20px"></p-skeleton>
+                </div>
+                }
+            </div>
+            <div>
+                <div class="skeleton-card">
+                    <p-skeleton width="120px" height="18px"></p-skeleton>
+                    <p-skeleton width="100%" height="10px" borderRadius="10px"></p-skeleton>
+                    <p-skeleton width="80px" height="14px"></p-skeleton>
+                </div>
+                <div class="skeleton-card" style="margin-top:18px">
+                    <p-skeleton width="80px" height="18px"></p-skeleton>
+                    <p-skeleton width="100%" height="160px" borderRadius="12px"></p-skeleton>
+                </div>
+            </div>
+        </div>
+
     </div>
     } @else if (course(); as currentCourse) {
     <div class="course-detail-page">
@@ -33,7 +76,9 @@
                     @if (currentCourse.enrolled) {
                     <button type="button" class="primary-btn">Continue learning</button>
                     } @else {
-                    <button type="button" class="primary-btn">Enroll now</button>
+                    <button type="button" class="primary-btn" [disabled]="isEnrolling()" (click)="enroll()">
+                        {{ isEnrolling() ? 'Enrolling...' : 'Enroll now' }}
+                    </button>
                     }
                 </div>
             </div>
@@ -65,10 +110,18 @@
                         </div>
 
                         <div class="lesson-status">
-                            @if (lesson.completed) {
-                            <span class="status done">Done</span>
+                            @if (currentCourse.enrolled) {
+                            <button type="button" class="status" [class.done]="lesson.completed"
+                                [class.pending]="!lesson.completed"
+                                [disabled]="isTogglingLesson() === lesson.id.toString()"
+                                (click)="toggleLesson({ id: lesson.id.toString(), completed: lesson.completed })">
+                                {{ isTogglingLesson() === lesson.id.toString() ? '...' : (lesson.completed ? 'Done ✓' :
+                                'Mark done') }}
+                            </button>
                             } @else {
-                            <span class="status pending">Pending</span>
+                            <span class="status" [class.done]="lesson.completed" [class.pending]="!lesson.completed">
+                                {{ lesson.completed ? 'Done' : 'Pending' }}
+                            </span>
                             }
                         </div>
                     </article>
@@ -85,22 +138,20 @@
             <aside class="course-sidebar">
                 <div class="sidebar-card">
                     <h3>Progress</h3>
-
                     <div class="progress-bar">
                         <div class="progress-fill" [style.width.%]="currentCourse.progress"></div>
                     </div>
-
                     <p>{{ currentCourse.progress }}% completed</p>
                 </div>
 
                 <div class="sidebar-card">
                     <h3>Preview</h3>
-
                     @if (previewEmbedUrl()) {
                     <div class="video-frame">
                         <iframe [src]="previewEmbedUrl()" title="Course preview video" loading="lazy"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen></iframe>
+                            allowfullscreen>
+                        </iframe>
                     </div>
                     } @else if (currentCourse.preview_url) {
                     <a class="preview-link" [href]="currentCourse.preview_url" target="_blank"

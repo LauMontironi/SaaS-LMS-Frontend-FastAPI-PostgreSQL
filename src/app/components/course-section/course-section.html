@@ -11,13 +11,10 @@
     </div>
 
     <div class="courses-grid">
-
-        @for(course of courses(); track course.id){
-
-        <app-course-card [course]="course"></app-course-card>
-
+        @for(course of courses(); track course.id; let i = $index){
+        <app-course-card [course]="course" [style.animation-delay]="i * 60 + 'ms'">
+        </app-course-card>
         }
-
     </div>
 
 </section>

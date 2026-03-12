@@ -27,4 +27,10 @@ export class CoursesService {
     this.http.get<ICourse[]>(`${this.base_url}/courses/featured`)
   );
 }
+
+  enrollInCourse(courseId: string) {
+  return firstValueFrom(
+    this.http.post(`${this.base_url}/courses/${courseId}/enroll`, {})
+  );
+}
 }

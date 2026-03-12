@@ -1,70 +1,7 @@
-<!-- 
 
-<section class="hero-panel">
-
-    <div class="hero-content">
-
-        <div class="hero-text">
-            <h2>Find the course that unlocks your next skill</h2>
-
-            <p>
-                Learn AI, backend, frontend, and real developer skills with practical courses designed for your flow.
-            </p>
-
-            <button class="hero-btn">Find your course</button>
-        </div>
-
-        <div class="hero-image">
-            <img src="assets/learn.jpg" alt="Learn and flow dialog" class="hero-img-side">
-        </div>
-
-    </div>
-
-</section>
-
-<section class="promo-panel">
-
-    <div class="promo-image">
-        <img src="assets/tutorial.png" alt="Interview preparation video">
-    </div>
-
-    <div class="promo-content">
-        <h3>Prepare for your next tech interview</h3>
-
-        <p>
-            Watch new practical videos and learn how to explain your projects,
-            answer technical questions and stand out as a developer.
-        </p>
-
-        <button class="promo-btn">Watch now</button>
-    </div>
-
-</section>
-
-
-
-<section class="popular-courses">
-    <h2>Most popular courses</h2>
-
-    <div class="courses-grid">
-        @for (course of featuredVideos; track course.id) {
-        <div style="border: 1px solid #ccc; padding: 16px; background: white;">
-            <img style="width: 100%; height: 150px; object-fit: cover; display: block;"
-                [src]="course.thumbnail_url || course.banner_url || 'assets/course-placeholder.png'"
-                [alt]="course.title" />
-
-            <h3>{{ course.title }}</h3>
-            <p>{{ course.description }}</p>
-        </div>
-        }
-    </div>
-</section>
-
-
- -->
 
 <!-- HERO -->
-<section class="hero-panel">
+<!-- <section class="hero-panel">
 
     <div class="hero-content">
 
@@ -126,10 +63,10 @@
     </div>
 
 </section>
-
+ -->
 
 <!-- TRUST BAR -->
-<section class="trust-bar">
+<!-- <section class="trust-bar">
 
     <span>Trusted by developers at</span>
 
@@ -141,10 +78,10 @@
         <span>Linear</span>
     </div>
 
-</section>
+</section> -->
 
 
-<!-- PROMO PANEL -->
+<!-- PROMO PANEL
 <section class="promo-panel">
 
     <div class="promo-inner">
@@ -201,9 +138,9 @@
         </article>
         }
     </div>
-</section>
+</section> -->
 
-<!-- COURSES -->
+<!-- COURSES
 <section class="popular-courses">
     <div class="section-header">
         <h2>Most popular courses</h2>
@@ -231,4 +168,161 @@
         </article>
         }
     </div>
-</section>
+</section> -->
+
+<div class="landing">
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-copy">
+            <div class="hero-eyebrow">
+                🚀 New courses every week
+            </div>
+
+            <h1>
+                Learn skills that
+                <em>actually get you hired</em>
+            </h1>
+
+            <p>
+                Practical courses in AI, backend, frontend and more.
+                Built for developers who want to build real things.
+            </p>
+
+            <div class="hero-actions">
+                <a routerLink="/register" class="btn-primary">Start learning free</a>
+                <a routerLink="/login" class="btn-ghost">Sign in</a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <strong>12K+</strong>
+                    <span>Students</span>
+                </div>
+                <div class="hero-stat">
+                    <strong>80+</strong>
+                    <span>Courses</span>
+                </div>
+                <div class="hero-stat">
+                    <strong>4.9★</strong>
+                    <span>Rating</span>
+                </div>
+                <div class="hero-stat">
+                    <strong>11</strong>
+                    <span>Categories</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=900&q=80"
+                alt="Students learning" />
+
+            <div class="hero-badge">
+                <div class="hero-badge-icon">🎓</div>
+                <div class="hero-badge-text">
+                    <strong>Join 12K+ learners</strong>
+                    <span>Start your journey today</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST BAR -->
+    <div class="trust-bar">
+        <p>Trusted by developers at</p>
+        <div class="trust-logos">
+            <span>Spotify</span>
+            <span>Vercel</span>
+            <span>Notion</span>
+            <span>Stripe</span>
+            <span>Linear</span>
+        </div>
+    </div>
+
+    <!-- CATEGORIES -->
+    <section class="section">
+        <div class="section-header">
+            <h2>Browse by category</h2>
+            <a routerLink="/dashboard">View all →</a>
+        </div>
+
+        <div class="categories-grid">
+            @for (cat of categories; track cat.name) {
+            <div class="category-card">
+                <div class="category-icon" [style.background]="cat.bg">
+                    {{ cat.icon }}
+                </div>
+                <span>{{ cat.name }}</span>
+            </div>
+            }
+        </div>
+    </section>
+
+    <!-- FEATURED COURSES -->
+    <section class="section" style="padding-top: 0">
+        <div class="section-header">
+            <h2>Most popular courses</h2>
+            <a routerLink="/dashboard">See all →</a>
+        </div>
+
+        <div class="courses-grid">
+            @for (course of featuredCourses(); track course.id) {
+            <a [routerLink]="['/courses', course.id]" class="course-card">
+                <img class="course-thumb"
+                    [src]="course.thumbnail_url || course.banner_url || 'assets/course-placeholder.png'"
+                    [alt]="course.title" />
+                <div class="course-body">
+                    <span class="course-level">{{ course.level }}</span>
+                    <h3>{{ course.title }}</h3>
+                    <p>{{ course.description }}</p>
+                </div>
+            </a>
+            }
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <div class="how-section">
+        <div class="how-inner">
+            <h2>How CourseFlow works</h2>
+            <p class="how-subtitle">Three simple steps to start learning</p>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">🔍</div>
+                    <h3>Find your course</h3>
+                    <p>Browse 80+ courses across 11 categories. Filter by level and topic to find exactly what you need.
+                    </p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">📚</div>
+                    <h3>Enroll and learn</h3>
+                    <p>Get instant access to lessons, videos and practical content. Learn at your own pace, anytime.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">🚀</div>
+                    <h3>Track your progress</h3>
+                    <p>Mark lessons as complete, follow your progress and keep your learning momentum going.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="cta-inner">
+            <div class="cta-copy">
+                <h2>Ready to start your learning journey?</h2>
+                <p>Join thousands of developers building real skills with CourseFlow.</p>
+            </div>
+            <a routerLink="/register" class="btn-white">Get started free →</a>
+        </div>
+    </section>
+
+</div>

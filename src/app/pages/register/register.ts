@@ -4,7 +4,6 @@ import { Router, RouterLink } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { AuthService } from '../../services/auth-service';
 import { IUserCreate } from '../../interfaces/IUser';
-import { FooterComponent } from '../../components/footer-component/footer-component';
 import { Location, NgClass } from '@angular/common';
 
 function passwordsMatchValidator(control: AbstractControl): ValidationErrors | null {
@@ -18,7 +17,7 @@ function passwordsMatchValidator(control: AbstractControl): ValidationErrors | n
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule, RouterLink, FooterComponent,NgClass],
+  imports: [ReactiveFormsModule, RouterLink,NgClass],
   templateUrl: './register.html',
   styleUrl: './register.css',
   changeDetection: ChangeDetectionStrategy.OnPush

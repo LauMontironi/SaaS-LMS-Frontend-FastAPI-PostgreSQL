@@ -7,11 +7,10 @@
 
     @if (courses().length > 0) {
     <div class="courses-row">
-
-        @for(course of courses(); track course.id) {
-        <app-course-card [course]="course" [showProgress]="true"></app-course-card>
+        @for(course of courses(); track course.id; let i = $index) {
+        <app-course-card [course]="course" [showProgress]="true" [style.animation-delay]="i * 60 + 'ms'">
+        </app-course-card>
         }
-
     </div>
     } @else {
     <div class="empty-learning">

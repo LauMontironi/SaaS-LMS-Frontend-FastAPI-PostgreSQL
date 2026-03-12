@@ -1,0 +1,119 @@
+<div class="profile-page">
+
+    <button type="button" class="back-btn" (click)="goBack()">
+        ← Back
+    </button>
+
+    @if (isLoading()) {
+
+    <div class="profile-hero skeleton-hero">
+        <p-skeleton shape="circle" size="100px"></p-skeleton>
+        <div style="display:flex; flex-direction:column; gap:10px">
+            <p-skeleton width="200px" height="28px"></p-skeleton>
+            <p-skeleton width="160px" height="16px"></p-skeleton>
+        </div>
+    </div>
+
+    <div class="profile-grid">
+        <div class="profile-card">
+            <p-skeleton width="120px" height="20px" style="margin-bottom:16px"></p-skeleton>
+            @for (item of [1,2,3,4]; track item) {
+            <div class="skeleton-field">
+                <p-skeleton width="80px" height="13px"></p-skeleton>
+                <p-skeleton width="100%" height="18px"></p-skeleton>
+            </div>
+            }
+        </div>
+        <div class="profile-card">
+            <p-skeleton width="140px" height="20px" style="margin-bottom:16px"></p-skeleton>
+            @for (item of [1,2]; track item) {
+            <div class="skeleton-course">
+                <p-skeleton width="80px" height="60px" borderRadius="10px"></p-skeleton>
+                <div style="flex:1; display:flex; flex-direction:column; gap:8px">
+                    <p-skeleton width="80%" height="16px"></p-skeleton>
+                    <p-skeleton width="50%" height="13px"></p-skeleton>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+
+    } @else if (user(); as currentUser) {
+
+    <div class="profile-hero">
+        <div class="avatar-box">
+            @if (currentUser.avatar_url) {
+            <img [src]="currentUser.avatar_url" [alt]="currentUser.first_name" class="avatar-img" />
+            } @else {
+            <div class="avatar-initials">{{ initials() }}</div>
+            }
+        </div>
+        <div class="hero-info">
+            <h1>{{ currentUser.first_name }} {{ currentUser.last_name }}</h1>
+            <p>{{ currentUser.email }}</p>
+            <span class="role-badge">{{ currentUser.role }}</span>
+        </div>
+    </div>
+
+    <div class="profile-grid">
+
+        <div class="profile-card">
+            <h2>My details</h2>
+            <div class="detail-field">
+                <span class="field-label">First name</span>
+                <span class="field-value">{{ currentUser.first_name }}</span>
+            </div>
+            <div class="detail-field">
+                <span class="field-label">Last name</span>
+                <span class="field-value">{{ currentUser.last_name }}</span>
+            </div>
+            <div class="detail-field">
+                <span class="field-label">Email</span>
+                <span class="field-value">{{ currentUser.email }}</span>
+            </div>
+            <div class="detail-field">
+                <span class="field-label">Phone</span>
+                <span class="field-value">{{ currentUser.phone || '—' }}</span>
+            </div>
+            <div class="detail-field">
+                <span class="field-label">Address</span>
+                <span class="field-value">{{ currentUser.address || '—' }}</span>
+            </div>
+            <div class="detail-field">
+                <span class="field-label">Status</span>
+                <span class="field-value">{{ currentUser.is_active ? 'Active' : 'Inactive' }}</span>
+            </div>
+        </div>
+
+        <div class="profile-card">
+            <h2>My courses</h2>
+            @if (enrolledCourses().length === 0) {
+            <div class="empty-courses">
+                <p>You haven't started any course yet.</p>
+                <a routerLink="/dashboard" class="explore-btn">Explore courses</a>
+            </div>
+            } @else {
+            <div class="courses-list">
+                @for (course of enrolledCourses(); track course.id) {
+                <a [routerLink]="['/courses', course.id]" class="course-row">
+                    <img [src]="course.thumbnail_url || course.banner_url || 'assets/course-placeholder.png'"
+                        [alt]="course.title" class="course-thumb" />
+                    <div class="course-info">
+                        <strong>{{ course.title }}</strong>
+                        <span>{{ course.level }}</span>
+                        <div class="mini-progress">
+                            <div class="mini-fill" [style.width.%]="course.progress || 0"></div>
+                        </div>
+                        <span class="progress-label">{{ course.progress || 0 }}%</span>
+                    </div>
+                </a>
+                }
+            </div>
+            }
+        </div>
+
+    </div>
+
+    }
+
+</div>

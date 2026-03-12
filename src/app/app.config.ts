@@ -18,9 +18,13 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptors([authInterceptor])),
     MessageService,
     providePrimeNG({
-      theme: {
-        preset: Aura
-      }
-    })
+  theme: {
+    preset: Aura,
+    options: {
+      darkModeSelector: 'none'
+    }
+  }
+})
+  
   ]
 };

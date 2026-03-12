@@ -4,6 +4,50 @@
 
 <div class="dashboard-page">
 
+    @if (isLoading()) {
+
+    <!-- SKELETON WELCOME BANNER -->
+    <div class="skeleton-banner">
+        <div>
+            <p-skeleton width="120px" height="14px" styleClass="mb-2"></p-skeleton>
+            <p-skeleton width="280px" height="32px" styleClass="mb-2"></p-skeleton>
+            <p-skeleton width="220px" height="16px"></p-skeleton>
+        </div>
+        <p-skeleton shape="circle" size="76px"></p-skeleton>
+    </div>
+
+    <!-- SKELETON CARDS ROW -->
+    <div class="skeleton-section">
+        <p-skeleton width="200px" height="28px" styleClass="mb-3"></p-skeleton>
+        <div class="skeleton-row">
+            @for (item of [1,2,3]; track item) {
+            <div class="skeleton-card">
+                <p-skeleton width="100%" height="160px" styleClass="mb-2"></p-skeleton>
+                <p-skeleton width="60%" height="14px" styleClass="mb-1"></p-skeleton>
+                <p-skeleton width="90%" height="18px" styleClass="mb-1"></p-skeleton>
+                <p-skeleton width="75%" height="14px"></p-skeleton>
+            </div>
+            }
+        </div>
+    </div>
+
+    <!-- SKELETON GRID -->
+    <div class="skeleton-section">
+        <p-skeleton width="200px" height="28px" styleClass="mb-3"></p-skeleton>
+        <div class="skeleton-grid">
+            @for (item of [1,2,3,4]; track item) {
+            <div class="skeleton-card">
+                <p-skeleton width="100%" height="160px" styleClass="mb-2"></p-skeleton>
+                <p-skeleton width="60%" height="14px" styleClass="mb-1"></p-skeleton>
+                <p-skeleton width="90%" height="18px" styleClass="mb-1"></p-skeleton>
+                <p-skeleton width="75%" height="14px"></p-skeleton>
+            </div>
+            }
+        </div>
+    </div>
+
+    } @else {
+
     <app-welcome-banner [user]="user()"></app-welcome-banner>
 
     <app-continue-learning [courses]="continueLearning()"
@@ -18,28 +62,16 @@
         <div class="promo-text">
             <p class="promo-eyebrow">Recommended path</p>
             <h2>Build your next skill with structured learning</h2>
-            <p>
-                Explore featured categories, continue your active courses and discover the
-                next step in your learning journey.
-            </p>
+            <p>Explore featured categories, continue your active courses and discover the next step in your learning
+                journey.</p>
             <button type="button" class="promo-button" (click)="toggleFilters()">
                 Search by category
             </button>
         </div>
-
         <div class="promo-stats">
-            <div class="stat-card">
-                <strong>50+</strong>
-                <span>Courses available</span>
-            </div>
-            <div class="stat-card">
-                <strong>11</strong>
-                <span>Categories</span>
-            </div>
-            <div class="stat-card">
-                <strong>4</strong>
-                <span>Lessons per course</span>
-            </div>
+            <div class="stat-card"><strong>50+</strong><span>Courses available</span></div>
+            <div class="stat-card"><strong>11</strong><span>Categories</span></div>
+            <div class="stat-card"><strong>4</strong><span>Lessons per course</span></div>
         </div>
     </section>
 
@@ -55,5 +87,7 @@
 
     <app-course-section title="All courses" subtitle="Browse the full catalog"
         [courses]="filteredCourses()"></app-course-section>
+
+    }
 
 </div>

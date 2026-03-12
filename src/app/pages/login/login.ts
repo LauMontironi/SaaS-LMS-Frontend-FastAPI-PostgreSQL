@@ -1,4 +1,4 @@
-import { FooterComponent } from './../../components/footer-component/footer-component';
+
 import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -10,7 +10,7 @@ import { NgClass, Location } from '@angular/common';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, FooterComponent,NgClass ],
+  imports: [ReactiveFormsModule,NgClass ],
   templateUrl: './login.html',
   styleUrl: './login.css',
   changeDetection: ChangeDetectionStrategy.OnPush

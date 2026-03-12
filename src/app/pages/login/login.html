@@ -5,6 +5,11 @@
     </button>
 
     <div class="auth-container">
+
+        <div class="auth-logo">
+            <div class="auth-logo-icon">🎓</div>
+        </div>
+
         <h1>Welcome back</h1>
         <p class="auth-subtitle">Sign in to continue learning</p>
 
@@ -12,27 +17,28 @@
 
             <div class="form-field">
                 <label for="email">Email</label>
-                <input id="email" type="email" formControlName="email" placeholder="Enter your email" />
+                <input id="email" type="email" formControlName="email" placeholder="you@example.com" />
             </div>
 
             <div class="form-field">
                 <label for="password">Password</label>
-
                 <div class="password-wrapper">
                     <input id="password" [type]="showPassword ? 'text' : 'password'" formControlName="password"
-                        placeholder="Enter your password" />
-
-                    <button type="button" class="toggle-password" (click)="togglePassword()"
-                        aria-label="Toggle password visibility">
+                        placeholder="••••••••" />
+                    <button type="button" class="toggle-password" (click)="togglePassword()">
                         <i class="pi" [ngClass]="showPassword ? 'pi-eye-slash' : 'pi-eye'"></i>
                     </button>
                 </div>
             </div>
 
-            <button type="submit" class="auth-btn">
-                Login
-            </button>
+            <button type="submit" class="auth-btn">Sign in</button>
+
         </form>
+
+        <p class="auth-footer">
+            Don't have an account? <a routerLink="/register">Create one</a>
+        </p>
+
     </div>
 
 </div>

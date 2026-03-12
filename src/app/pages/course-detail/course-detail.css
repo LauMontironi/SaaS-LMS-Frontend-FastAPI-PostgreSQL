@@ -268,3 +268,61 @@
     background: #cbd5e1;
     transform: translateY(-1px);
 }
+
+.skeleton-hero {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
+    align-items: center;
+    background: #e2e8f0;
+    border-radius: 24px;
+    padding: 40px;
+    margin-bottom: 40px;
+}
+
+.skeleton-hero-copy {
+    display: flex;
+    flex-direction: column;
+}
+
+.skeleton-content-layout {
+    display: grid;
+    grid-template-columns: 1.4fr 0.8fr;
+    gap: 28px;
+}
+
+.skeleton-lesson {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .08);
+    margin-bottom: 14px;
+}
+
+.skeleton-card {
+    background: white;
+    padding: 20px;
+    border-radius: 18px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .08);
+}
+
+.lesson-status button.status {
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: .8rem;
+    transition: 0.2s ease;
+}
+
+.lesson-status button.status:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+.lesson-status button.status:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
