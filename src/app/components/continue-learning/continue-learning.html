@@ -1,0 +1,32 @@
+<section class="dashboard-section">
+
+    <div class="section-header">
+        <h2>Continue learning</h2>
+        <span>{{ courses().length }} courses</span>
+    </div>
+
+    @if (courses().length > 0) {
+    <div class="courses-row">
+
+        @for(course of courses(); track course.id) {
+        <app-course-card [course]="course" [showProgress]="true"></app-course-card>
+        }
+
+    </div>
+    } @else {
+    <div class="empty-learning">
+        <div class="empty-icon">🚀</div>
+        <div class="empty-text">
+            <h3>Get ready for your next learning journey</h3>
+            <p>
+                Start your first course and track your progress here.
+            </p>
+        </div>
+
+        <button type="button" class="empty-button" (click)="onExploreCourses()">
+            Explore courses
+        </button>
+    </div>
+    }
+
+</section>

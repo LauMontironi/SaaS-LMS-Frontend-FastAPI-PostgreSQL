@@ -1,0 +1,59 @@
+<button type="button" class="back-btn" (click)="goBack()">
+    ← Back
+</button>
+
+<div class="dashboard-page">
+
+    <app-welcome-banner [user]="user()"></app-welcome-banner>
+
+    <app-continue-learning [courses]="continueLearning()"
+        (exploreCourses)="scrollToRecommended()"></app-continue-learning>
+
+    <app-category-ticker></app-category-ticker>
+
+    <app-course-filters [isOpen]="showFilters()" [categories]="categories()" (filtersChange)="applyFilters($event)"
+        (closePanel)="closeFilters()"></app-course-filters>
+
+    <section class="promo-banner">
+        <div class="promo-text">
+            <p class="promo-eyebrow">Recommended path</p>
+            <h2>Build your next skill with structured learning</h2>
+            <p>
+                Explore featured categories, continue your active courses and discover the
+                next step in your learning journey.
+            </p>
+            <button type="button" class="promo-button" (click)="toggleFilters()">
+                Search by category
+            </button>
+        </div>
+
+        <div class="promo-stats">
+            <div class="stat-card">
+                <strong>50+</strong>
+                <span>Courses available</span>
+            </div>
+            <div class="stat-card">
+                <strong>11</strong>
+                <span>Categories</span>
+            </div>
+            <div class="stat-card">
+                <strong>4</strong>
+                <span>Lessons per course</span>
+            </div>
+        </div>
+    </section>
+
+    <app-trusted-brands></app-trusted-brands>
+
+    <div id="what-to-learn-next">
+        <app-course-section title="What to learn next" subtitle="Recommended for you"
+            [courses]="recommendedCourses()"></app-course-section>
+    </div>
+
+    <app-course-section title="Trending courses" subtitle="Popular right now"
+        [courses]="trendingCourses()"></app-course-section>
+
+    <app-course-section title="All courses" subtitle="Browse the full catalog"
+        [courses]="filteredCourses()"></app-course-section>
+
+</div>

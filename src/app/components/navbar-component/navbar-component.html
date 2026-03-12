@@ -1,0 +1,26 @@
+<nav class="navbar">
+
+    <div class="brand">
+        <img src="Logo.jpg" alt="CourseFlow logo" class="brand-logo">
+
+        <div class="brand-copy">
+            <h1>CourseFlow</h1>
+            <p>
+                Discover courses that match your flow.
+                Learn AI, backend, frontend and more.
+            </p>
+        </div>
+    </div>
+
+    <div class="nav-actions">
+        @if (isLoggedIn()) {
+        <button type="button" class="nav-btn logout-btn" (click)="logout()">
+            Logout
+        </button>
+        } @else {
+        <a class="nav-link" routerLink="/login">Login</a>
+        <a class="nav-link nav-link-primary" routerLink="/register">Register</a>
+        }
+    </div>
+
+</nav>

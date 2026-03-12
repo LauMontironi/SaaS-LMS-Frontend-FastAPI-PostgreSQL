@@ -1,0 +1,41 @@
+<section class="ticker-section">
+
+    <div class="ticker-wrapper">
+
+        <div class="ticker-track">
+
+            @for (category of categories(); track category.name) {
+
+            <div class="ticker-item">
+
+                <img [src]="category.image" [alt]="category.name" />
+
+                <!-- <span>
+                    {{ category.name }}
+                </span> -->
+
+            </div>
+
+            }
+
+            <!-- duplicado para scroll infinito -->
+
+            @for (category of categories(); track 'copy-' + category.name) {
+
+            <div class="ticker-item">
+
+                <img [src]="category.image" [alt]="category.name" />
+
+                <span>
+                    {{ category.name }}
+                </span>
+
+            </div>
+
+            }
+
+        </div>
+
+    </div>
+
+</section>

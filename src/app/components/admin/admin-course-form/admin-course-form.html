@@ -1,0 +1,98 @@
+<section class="course-form-panel">
+    <div class="form-header">
+        <div>
+            <p class="form-eyebrow">Admin course form</p>
+            <h2>{{ formTitle }}</h2>
+        </div>
+
+        <button type="button" class="close-btn" (click)="onCancel()">
+            Close
+        </button>
+    </div>
+
+    <form [formGroup]="courseForm" (ngSubmit)="onSubmit()" class="course-form">
+
+        <div class="form-grid">
+            <div class="field full">
+                <label for="title">Title</label>
+                <input id="title" type="text" formControlName="title" />
+            </div>
+
+            <div class="field full">
+                <label for="description">Description</label>
+                <textarea id="description" rows="4" formControlName="description"></textarea>
+            </div>
+
+            <div class="field">
+                <label for="category_id">Category ID</label>
+                <input id="category_id" type="text" formControlName="category_id" />
+            </div>
+
+            <div class="field">
+                <label for="level">Level</label>
+                <select id="level" formControlName="level">
+                    <option value="">Select level</option>
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="status">Status</label>
+                <select id="status" formControlName="status">
+                    <option value="published">Published</option>
+                    <option value="draft">Draft</option>
+                    <option value="archived">Archived</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="popularity_score">Popularity score</label>
+                <input id="popularity_score" type="number" formControlName="popularity_score" />
+            </div>
+
+            <div class="field full">
+                <label for="thumbnail_url">Thumbnail URL</label>
+                <input id="thumbnail_url" type="text" formControlName="thumbnail_url" />
+            </div>
+
+            <div class="field full">
+                <label for="banner_url">Banner URL</label>
+                <input id="banner_url" type="text" formControlName="banner_url" />
+            </div>
+
+            <div class="field full">
+                <label for="video_url">Video URL</label>
+                <input id="video_url" type="text" formControlName="video_url" />
+            </div>
+
+            <div class="field full">
+                <label for="preview_url">Preview URL</label>
+                <input id="preview_url" type="text" formControlName="preview_url" />
+            </div>
+
+            <div class="checkbox-row">
+                <label class="checkbox-item">
+                    <input type="checkbox" formControlName="is_featured" />
+                    Featured
+                </label>
+
+                <label class="checkbox-item">
+                    <input type="checkbox" formControlName="is_active" />
+                    Active
+                </label>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="button" class="secondary-btn" (click)="onCancel()">
+                Cancel
+            </button>
+
+            <button type="submit" class="primary-btn">
+                Save course
+            </button>
+        </div>
+    </form>
+</section>

@@ -1,0 +1,50 @@
+<div class="auth-page">
+
+    <button type="button" class="back-btn" (click)="goBack()">
+        ← Back
+    </button>
+
+    <div class="auth-card-wrapper">
+
+        <div class="auth-container">
+            <h1>Create account</h1>
+            <p class="auth-subtitle">Start your learning journey</p>
+
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+                <div class="form-field">
+                    <label for="first_name">First name</label>
+                    <input id="first_name" type="text" formControlName="first_name" />
+                </div>
+
+                <div class="form-field">
+                    <label for="last_name">Last name</label>
+                    <input id="last_name" type="text" formControlName="last_name" />
+                </div>
+
+                <div class="form-field">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" formControlName="email" />
+                </div>
+
+                <div class="form-field">
+                    <label for="password">Password</label>
+
+                    <div class="password-wrapper">
+                        <input id="password" [type]="showPassword ? 'text' : 'password'" formControlName="password" />
+
+                        <button type="button" class="toggle-password" (click)="togglePassword()">
+                            <i class="pi" [ngClass]="showPassword ? 'pi-eye-slash' : 'pi-eye'"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" class="auth-btn">
+                    Register
+                </button>
+
+            </form>
+        </div>
+
+    </div>
+</div>

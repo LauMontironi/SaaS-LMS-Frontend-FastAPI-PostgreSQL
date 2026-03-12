@@ -1,0 +1,23 @@
+<section class="dashboard-section">
+
+    <div class="section-header">
+
+        <h2>{{ title() }}</h2>
+
+        @if(subtitle()){
+        <span>{{ subtitle() }}</span>
+        }
+
+    </div>
+
+    <div class="courses-grid">
+
+        @for(course of courses(); track course.id){
+
+        <app-course-card [course]="course"></app-course-card>
+
+        }
+
+    </div>
+
+</section>

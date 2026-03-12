@@ -1,0 +1,120 @@
+<div class="course-detail-page-wrapper">
+
+    <button type="button" class="back-btn" (click)="goBack()">
+        ← Back
+    </button>
+
+    @if (isLoading()) {
+    <div class="course-detail-page">
+        <p>Loading course...</p>
+    </div>
+    } @else if (course(); as currentCourse) {
+    <div class="course-detail-page">
+
+        <section class="course-hero">
+            <div class="course-hero-copy">
+                <p class="course-category">
+                    {{ currentCourse.category_name }}
+                </p>
+
+                <h1>{{ currentCourse.title }}</h1>
+
+                <p class="course-description">
+                    {{ currentCourse.description }}
+                </p>
+
+                <div class="course-meta">
+                    <span>{{ currentCourse.level }}</span>
+                    <span>{{ currentCourse.lessons.length }} lessons</span>
+                    <span>{{ currentCourse.progress }}% complete</span>
+                </div>
+
+                <div class="course-actions">
+                    @if (currentCourse.enrolled) {
+                    <button type="button" class="primary-btn">Continue learning</button>
+                    } @else {
+                    <button type="button" class="primary-btn">Enroll now</button>
+                    }
+                </div>
+            </div>
+
+            <div class="course-hero-media">
+                <img [src]="currentCourse.banner_url || currentCourse.thumbnail_url || 'assets/course-placeholder.png'"
+                    [alt]="currentCourse.title" />
+            </div>
+        </section>
+
+        <section class="course-content-layout">
+            <div class="lessons-panel">
+                <div class="section-title-row">
+                    <h2>Course content</h2>
+                    <span>{{ currentCourse.lessons.length }} lessons</span>
+                </div>
+
+                @if (currentCourse.lessons.length > 0) {
+                <div class="lessons-list">
+                    @for (lesson of currentCourse.lessons; track lesson.id) {
+                    <article class="lesson-item">
+                        <div class="lesson-order">
+                            {{ lesson.order }}
+                        </div>
+
+                        <div class="lesson-copy">
+                            <h3>{{ lesson.title }}</h3>
+                            <p>{{ lesson.content }}</p>
+                        </div>
+
+                        <div class="lesson-status">
+                            @if (lesson.completed) {
+                            <span class="status done">Done</span>
+                            } @else {
+                            <span class="status pending">Pending</span>
+                            }
+                        </div>
+                    </article>
+                    }
+                </div>
+                } @else {
+                <div class="empty-lessons">
+                    <h3>No lessons available yet</h3>
+                    <p>This course does not have lesson content loaded yet.</p>
+                </div>
+                }
+            </div>
+
+            <aside class="course-sidebar">
+                <div class="sidebar-card">
+                    <h3>Progress</h3>
+
+                    <div class="progress-bar">
+                        <div class="progress-fill" [style.width.%]="currentCourse.progress"></div>
+                    </div>
+
+                    <p>{{ currentCourse.progress }}% completed</p>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3>Preview</h3>
+
+                    @if (previewEmbedUrl()) {
+                    <div class="video-frame">
+                        <iframe [src]="previewEmbedUrl()" title="Course preview video" loading="lazy"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    </div>
+                    } @else if (currentCourse.preview_url) {
+                    <a class="preview-link" [href]="currentCourse.preview_url" target="_blank"
+                        rel="noopener noreferrer">
+                        Open preview
+                    </a>
+                    } @else {
+                    <p>No preview available yet.</p>
+                    }
+                </div>
+            </aside>
+        </section>
+
+    </div>
+    }
+
+</div>

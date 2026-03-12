@@ -1,0 +1,270 @@
+.course-detail-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px;
+}
+
+/* HERO */
+
+.course-hero {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
+    align-items: center;
+    background: linear-gradient(135deg, #0f172a, #1e3a8a);
+    border-radius: 24px;
+    padding: 40px;
+    color: white;
+    margin-bottom: 40px;
+}
+
+.course-hero-copy h1 {
+    font-size: 2.3rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+
+.course-category {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    opacity: .7;
+    margin-bottom: 10px;
+}
+
+.course-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: .9;
+    margin-bottom: 18px;
+}
+
+/* meta */
+
+.course-meta {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.course-meta span {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: .85rem;
+}
+
+/* buttons */
+
+.primary-btn {
+    background: white;
+    color: #1d4ed8;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 999px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.primary-btn:hover {
+    transform: translateY(-1px);
+}
+
+/* HERO MEDIA */
+
+.course-hero-media img {
+    width: 100%;
+    border-radius: 18px;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
+
+/* MAIN LAYOUT */
+
+.course-content-layout {
+    display: grid;
+    grid-template-columns: 1.4fr .8fr;
+    gap: 28px;
+}
+
+/* SECTION TITLE */
+
+.section-title-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.section-title-row h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+}
+
+.section-title-row span {
+    color: #64748b;
+    font-weight: 600;
+}
+
+/* LESSON LIST */
+
+.lessons-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.lesson-item {
+    display: grid;
+    grid-template-columns: 48px 1fr auto;
+    gap: 16px;
+    padding: 18px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .08);
+}
+
+.lesson-order {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: #e0edff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #2563eb;
+}
+
+.lesson-copy h3 {
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+.lesson-copy p {
+    font-size: .9rem;
+    color: #64748b;
+}
+
+.status {
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: .8rem;
+    font-weight: 600;
+}
+
+.status.done {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.status.pending {
+    background: #e2e8f0;
+    color: #334155;
+}
+
+/* SIDEBAR */
+
+.course-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.sidebar-card {
+    background: white;
+    padding: 20px;
+    border-radius: 18px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .08);
+}
+
+.sidebar-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+}
+
+/* PROGRESS */
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    border-radius: 10px;
+    background: #e2e8f0;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #2563eb, #60a5fa);
+}
+
+/* VIDEO */
+
+.video-frame {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.video-frame iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border: none;
+}
+
+/* EMPTY */
+
+.empty-lessons {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .08);
+}
+
+.empty-lessons h3 {
+    font-size: 1rem;
+    margin-bottom: 6px;
+}
+
+.empty-lessons p {
+    color: #64748b;
+    font-size: .9rem;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+
+    .course-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .course-content-layout {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 16px;
+    background: #e2e8f0;
+    color: #0f172a;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 18px;
+    transition: 0.2s ease;
+}
+
+.back-btn:hover {
+    background: #cbd5e1;
+    transform: translateY(-1px);
+}

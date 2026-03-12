@@ -1,0 +1,9 @@
+<section class="brands-section">
+    <p class="brands-title">Trusted by modern teams</p>
+
+    <div class="brands-row">
+        @for (brand of brands(); track brand) {
+        <div class="brand-pill">{{ brand }}</div>
+        }
+    </div>
+</section>

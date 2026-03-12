@@ -1,0 +1,29 @@
+.brands-section {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.brands-title {
+    margin: 0 0 16px;
+    color: #64748b;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.brands-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+}
+
+.brand-pill {
+    padding: 12px 18px;
+    border-radius: 999px;
+    background: white;
+    color: #0f172a;
+    font-weight: 800;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}

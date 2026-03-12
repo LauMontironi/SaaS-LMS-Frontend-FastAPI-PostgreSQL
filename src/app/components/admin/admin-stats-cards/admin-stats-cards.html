@@ -1,0 +1,35 @@
+@if (stats(); as currentStats) {
+<section class="stats-grid">
+
+    <article class="stat-card">
+        <h3>Total courses</h3>
+        <strong>{{ currentStats.total_courses }}</strong>
+    </article>
+
+    <article class="stat-card">
+        <h3>Total students</h3>
+        <strong>{{ currentStats.total_students }}</strong>
+    </article>
+
+    <article class="stat-card">
+        <h3>Total enrollments</h3>
+        <strong>{{ currentStats.total_enrollments }}</strong>
+    </article>
+
+    <article class="stat-card">
+        <h3>Total categories</h3>
+        <strong>{{ currentStats.total_categories }}</strong>
+    </article>
+
+    <article class="stat-card">
+        <h3>Featured courses</h3>
+        <strong>{{ currentStats.featured_courses }}</strong>
+    </article>
+
+    <article class="stat-card">
+        <h3>Active courses</h3>
+        <strong>{{ currentStats.active_courses }}</strong>
+    </article>
+
+</section>
+}

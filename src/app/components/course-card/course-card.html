@@ -1,0 +1,33 @@
+@if (course(); as currentCourse) {
+<a class="course-card-link" [routerLink]="['/courses', currentCourse.id]">
+    <article class="course-card">
+
+        <img [src]="currentCourse.thumbnail_url || currentCourse.banner_url || 'assets/course-placeholder.png'"
+            [alt]="currentCourse.title" />
+
+        <div class="course-content">
+            <p class="course-level">{{ currentCourse.level }}</p>
+
+            <h3>{{ currentCourse.title }}</h3>
+
+            <p class="course-description">
+                {{ currentCourse.description }}
+            </p>
+
+            @if(showProgress()) {
+            <div class="progress-block">
+                <div class="progress-label">
+                    <span>Progress</span>
+                    <span>{{ currentCourse.progress }}%</span>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" [style.width.%]="currentCourse.progress || 0"></div>
+                </div>
+            </div>
+            }
+        </div>
+
+    </article>
+</a>
+}

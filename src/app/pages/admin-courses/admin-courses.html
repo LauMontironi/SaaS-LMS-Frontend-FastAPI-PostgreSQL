@@ -1,0 +1,74 @@
+<div class="admin-page">
+
+    <button type="button" class="back-btn" (click)="goBack()">
+        ← Back
+    </button>
+
+    <section class="page-header">
+        <div>
+            <p class="admin-eyebrow">Admin courses</p>
+            <h1>Manage courses</h1>
+        </div>
+
+        <button type="button" class="primary-btn" (click)="openCreateForm()">
+            Create course
+        </button>
+    </section>
+
+    @if (showForm()) {
+    <app-admin-course-form [course]="editingCourse()" [instructorId]="instructorId" (saveCourse)="saveCourse($event)"
+        (cancelForm)="closeForm()"></app-admin-course-form>
+    }
+
+    @if (showLessonsManager()) {
+    <app-admin-lessons-manager [course]="selectedCourseForLessons()"
+        (closeManager)="closeLessonsManager()"></app-admin-lessons-manager>
+    }
+
+    @if (isLoading()) {
+    <p>Loading courses...</p>
+    } @else {
+    <div class="courses-table-wrapper">
+        <table class="courses-table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Level</th>
+                    <th>Status</th>
+                    <th>Featured</th>
+                    <th>Active</th>
+                    <th>Popularity</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @for (course of courses(); track course.id) {
+                <tr>
+                    <td>{{ course.title }}</td>
+                    <td>{{ course.level }}</td>
+                    <td>{{ course.status }}</td>
+                    <td>{{ course.is_featured ? 'Yes' : 'No' }}</td>
+                    <td>{{ course.is_active ? 'Yes' : 'No' }}</td>
+                    <td>{{ course.popularity_score }}</td>
+                    <td class="actions-cell">
+                        <button type="button" class="table-btn secondary" (click)="openEditForm(course)">
+                            Edit
+                        </button>
+
+                        <button type="button" class="table-btn secondary" (click)="openLessonsManager(course)">
+                            Lessons
+                        </button>
+
+                        <button type="button" class="table-btn danger" (click)="deleteCourse(course.id)">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    }
+
+</div>

@@ -1,0 +1,69 @@
+.welcome-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding: 36px 40px;
+    border-radius: 28px;
+    background: linear-gradient(135deg, #0f172a, #2563eb);
+    color: white;
+    margin-bottom: 32px;
+}
+
+.welcome-text {
+    flex: 1;
+}
+
+.eyebrow {
+    margin: 0 0 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.welcome-text h1 {
+    margin: 0 0 10px;
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.subtitle {
+    margin: 0;
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.user-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 84px;
+}
+
+.user-avatar,
+.user-initials {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+}
+
+.user-avatar {
+    object-fit: cover;
+    display: block;
+    border: 3px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
+}
+
+.user-initials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.14);
+    border: 3px solid rgba(255, 255, 255, 0.25);
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: white;
+}

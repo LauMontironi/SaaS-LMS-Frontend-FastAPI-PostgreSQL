@@ -1,0 +1,93 @@
+@if (course(); as currentCourse) {
+<section class="lessons-panel">
+
+    <div class="panel-header">
+        <div>
+            <p class="panel-eyebrow">Course lessons</p>
+            <h2>{{ currentCourse.title }}</h2>
+        </div>
+
+        <button type="button" class="close-btn" (click)="onClose()">
+            Close
+        </button>
+    </div>
+
+    <div class="lessons-layout">
+
+        <div class="lesson-form-card">
+            <h3>
+                {{ editingLesson() ? 'Edit lesson' : 'Create lesson' }}
+            </h3>
+
+            <form [formGroup]="lessonForm" (ngSubmit)="saveLesson()" class="lesson-form">
+
+                <div class="field">
+                    <label for="lesson-title">Title</label>
+                    <input id="lesson-title" type="text" formControlName="title" />
+                </div>
+
+                <div class="field">
+                    <label for="lesson-content">Content</label>
+                    <textarea id="lesson-content" rows="4" formControlName="content"></textarea>
+                </div>
+
+                <div class="field">
+                    <label for="lesson-video">Video URL</label>
+                    <input id="lesson-video" type="text" formControlName="video_url" />
+                </div>
+
+                <div class="field">
+                    <label for="lesson-order">Order</label>
+                    <input id="lesson-order" type="number" formControlName="order" />
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="secondary-btn" (click)="resetForm()">
+                        Clear
+                    </button>
+
+                    <button type="submit" class="primary-btn">
+                        Save lesson
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="lesson-list-card">
+            <div class="list-header">
+                <h3>Lessons list</h3>
+                <button type="button" class="secondary-btn" (click)="loadLessons()">
+                    Refresh
+                </button>
+            </div>
+
+            @if (isLoading()) {
+            <p>Loading lessons...</p>
+            } @else if (lessons().length === 0) {
+            <p>No lessons yet for this course.</p>
+            } @else {
+            <div class="lessons-list">
+                @for (lesson of lessons(); track lesson.id) {
+                <article class="lesson-item">
+                    <div class="lesson-main">
+                        <strong>#{{ lesson.order }} · {{ lesson.title }}</strong>
+                        <p>{{ lesson.content }}</p>
+                    </div>
+
+                    <div class="lesson-actions">
+                        <button type="button" class="table-btn secondary" (click)="editLesson(lesson)">
+                            Edit
+                        </button>
+                        <button type="button" class="table-btn danger" (click)="deleteLesson(lesson.id)">
+                            Delete
+                        </button>
+                    </div>
+                </article>
+                }
+            </div>
+            }
+        </div>
+
+    </div>
+</section>
+}

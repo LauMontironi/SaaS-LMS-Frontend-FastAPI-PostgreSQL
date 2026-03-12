@@ -1,0 +1,22 @@
+<section class="welcome-banner">
+    <div class="welcome-text">
+        <p class="eyebrow">Dashboard</p>
+
+        @if (user(); as currentUser) {
+        <h1>Welcome back, {{ currentUser.first_name }} 👋</h1>
+        <p class="subtitle">
+            Continue your learning journey and discover new courses.
+        </p>
+        }
+    </div>
+
+    <div class="user-box">
+        @if (userAvatar()) {
+        <img class="user-avatar" [src]="userAvatar()" alt="User avatar" />
+        } @else {
+        <div class="user-initials">
+            {{ initials() }}
+        </div>
+        }
+    </div>
+</section>

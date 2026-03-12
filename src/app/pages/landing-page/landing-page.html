@@ -1,0 +1,234 @@
+<!-- 
+
+<section class="hero-panel">
+
+    <div class="hero-content">
+
+        <div class="hero-text">
+            <h2>Find the course that unlocks your next skill</h2>
+
+            <p>
+                Learn AI, backend, frontend, and real developer skills with practical courses designed for your flow.
+            </p>
+
+            <button class="hero-btn">Find your course</button>
+        </div>
+
+        <div class="hero-image">
+            <img src="assets/learn.jpg" alt="Learn and flow dialog" class="hero-img-side">
+        </div>
+
+    </div>
+
+</section>
+
+<section class="promo-panel">
+
+    <div class="promo-image">
+        <img src="assets/tutorial.png" alt="Interview preparation video">
+    </div>
+
+    <div class="promo-content">
+        <h3>Prepare for your next tech interview</h3>
+
+        <p>
+            Watch new practical videos and learn how to explain your projects,
+            answer technical questions and stand out as a developer.
+        </p>
+
+        <button class="promo-btn">Watch now</button>
+    </div>
+
+</section>
+
+
+
+<section class="popular-courses">
+    <h2>Most popular courses</h2>
+
+    <div class="courses-grid">
+        @for (course of featuredVideos; track course.id) {
+        <div style="border: 1px solid #ccc; padding: 16px; background: white;">
+            <img style="width: 100%; height: 150px; object-fit: cover; display: block;"
+                [src]="course.thumbnail_url || course.banner_url || 'assets/course-placeholder.png'"
+                [alt]="course.title" />
+
+            <h3>{{ course.title }}</h3>
+            <p>{{ course.description }}</p>
+        </div>
+        }
+    </div>
+</section>
+
+
+ -->
+
+<!-- HERO -->
+<section class="hero-panel">
+
+    <div class="hero-content">
+
+        <div class="hero-text">
+
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                New courses every week
+            </div>
+
+            <h2>
+                Build real skills,
+                <em>ship real products</em>
+            </h2>
+
+            <p>
+                Learn AI, backend, frontend and real developer skills through practical
+                courses designed for people who want to build — not just watch.
+            </p>
+
+            <div class="hero-actions">
+                <button class="hero-btn">
+                    Browse courses
+                </button>
+
+                <button class="hero-btn-ghost">
+                    Explore learning paths
+                </button>
+            </div>
+
+            <div class="hero-stats">
+
+                <div class="hero-stat">
+                    <strong>12K+</strong>
+                    <span>Students learning</span>
+                </div>
+
+                <div class="hero-stat">
+                    <strong>80+</strong>
+                    <span>Courses available</span>
+                </div>
+
+                <div class="hero-stat">
+                    <strong>4.9★</strong>
+                    <span>Average rating</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="hero-visual">
+
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=900&q=80"
+                alt="Developers collaborating">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- TRUST BAR -->
+<section class="trust-bar">
+
+    <span>Trusted by developers at</span>
+
+    <div class="trust-logos">
+        <span>Spotify</span>
+        <span>Vercel</span>
+        <span>Notion</span>
+        <span>Stripe</span>
+        <span>Linear</span>
+    </div>
+
+</section>
+
+
+<!-- PROMO PANEL -->
+<section class="promo-panel">
+
+    <div class="promo-inner">
+
+        <div class="promo-image">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900&q=80"
+                alt="Tech interview preparation">
+
+            <div class="play-overlay">
+                ▶
+            </div>
+
+        </div>
+
+        <div class="promo-content">
+
+            <span class="promo-tag">Featured Series</span>
+
+            <h3>Prepare for your next tech interview</h3>
+
+            <p>
+                Learn how to present your projects, answer system design questions,
+                and stand out during technical interviews.
+            </p>
+
+            <button class="promo-btn">
+                Watch preview
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="trending-strip">
+    <div class="section-header">
+        <h2>Trending right now</h2>
+        <span class="section-subtitle">Fresh picks for developers</span>
+    </div>
+
+    <div class="trending-row">
+        @for (course of featuredVideos; track course.id) {
+        <article class="trending-card">
+            <img class="trending-thumb"
+                [src]="course.thumbnail_url || course.banner_url || 'assets/course-placeholder.png'"
+                [alt]="course.title" />
+
+            <div class="trending-body">
+                <span class="trending-badge">Trending</span>
+                <h3>{{ course.title }}</h3>
+                <p>{{ course.description }}</p>
+            </div>
+        </article>
+        }
+    </div>
+</section>
+
+<!-- COURSES -->
+<section class="popular-courses">
+    <div class="section-header">
+        <h2>Most popular courses</h2>
+        <a class="see-all" routerLink="/dashboard">View all →</a>
+    </div>
+
+    <div class="courses-grid">
+        @for (course of featuredVideos; track course.id) {
+        <article class="course-card">
+            <div class="course-image-wrap">
+                <img class="course-thumb"
+                    [src]="course.thumbnail_url || course.banner_url || 'assets/course-placeholder.png'"
+                    [alt]="course.title" />
+                <span class="course-pill">Popular</span>
+            </div>
+
+            <div class="course-body">
+                <h3>{{ course.title }}</h3>
+                <p>{{ course.description }}</p>
+
+                <div class="course-footer">
+                    <span class="course-link">Explore course</span>
+                </div>
+            </div>
+        </article>
+        }
+    </div>
+</section>

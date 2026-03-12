@@ -1,0 +1,48 @@
+@if (isOpen()) {
+<section class="filters-panel">
+
+    <div class="filters-header">
+        <div>
+            <p class="filters-eyebrow">Search by category</p>
+            <h3>Find the right course faster</h3>
+        </div>
+
+        <button type="button" class="close-btn" (click)="close()" aria-label="Close filters">
+            ✕
+        </button>
+    </div>
+
+    <div class="filters-body">
+        <div class="field">
+            <label for="category">Category</label>
+            <select id="category" [(ngModel)]="selectedCategory">
+                <option value="">All categories</option>
+                @for (category of categories(); track category) {
+                <option [value]="category">{{ category }}</option>
+                }
+            </select>
+        </div>
+
+        <div class="field">
+            <label for="level">Difficulty</label>
+            <select id="level" [(ngModel)]="selectedLevel">
+                <option value="">All levels</option>
+                @for (level of levels(); track level) {
+                <option [value]="level">{{ level }}</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="filters-actions">
+        <button type="button" class="secondary-btn" (click)="clearFilters()">
+            Clear
+        </button>
+
+        <button type="button" class="primary-btn" (click)="applyFilters()">
+            Apply filters
+        </button>
+    </div>
+
+</section>
+}

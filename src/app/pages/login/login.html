@@ -1,0 +1,38 @@
+<div class="auth-page">
+
+    <button type="button" class="back-btn" (click)="goBack()">
+        ← Back
+    </button>
+
+    <div class="auth-container">
+        <h1>Welcome back</h1>
+        <p class="auth-subtitle">Sign in to continue learning</p>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+            <div class="form-field">
+                <label for="email">Email</label>
+                <input id="email" type="email" formControlName="email" placeholder="Enter your email" />
+            </div>
+
+            <div class="form-field">
+                <label for="password">Password</label>
+
+                <div class="password-wrapper">
+                    <input id="password" [type]="showPassword ? 'text' : 'password'" formControlName="password"
+                        placeholder="Enter your password" />
+
+                    <button type="button" class="toggle-password" (click)="togglePassword()"
+                        aria-label="Toggle password visibility">
+                        <i class="pi" [ngClass]="showPassword ? 'pi-eye-slash' : 'pi-eye'"></i>
+                    </button>
+                </div>
+            </div>
+
+            <button type="submit" class="auth-btn">
+                Login
+            </button>
+        </form>
+    </div>
+
+</div>
