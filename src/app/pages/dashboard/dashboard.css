@@ -10,38 +10,12 @@
     padding: 32px 24px 56px;
 }
 
-.dashboard-section {
-    margin-bottom: 40px;
-}
-
-.section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-    gap: 16px;
-    margin-bottom: 18px;
-}
-
-.section-header h2 {
-    margin: 0;
-    font-size: 2rem;
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    color: #111827;
-}
-
-.section-header span {
-    color: #334155;
-    font-size: 1rem;
-    font-weight: 600;
-}
-
+/* PROMO BANNER */
 .promo-banner {
     display: flex;
     justify-content: space-between;
     gap: 24px;
-    padding: 28px;
+    padding: 36px 40px;
     margin-bottom: 40px;
     border-radius: 28px;
     background: linear-gradient(135deg, #0f172a, #1e3a8a, #2563eb);
@@ -66,7 +40,7 @@
     margin: 0 0 12px;
     font-size: 1.9rem;
     font-weight: 800;
-    line-height: 1.1;
+    line-height: 1.2;
     color: white;
 }
 
@@ -78,28 +52,31 @@
 
 .promo-button {
     margin-top: 18px;
-    padding: 12px 18px;
+    padding: 12px 20px;
     border: none;
     border-radius: 999px;
     background: white;
     color: #1d4ed8;
     font-weight: 800;
+    font-size: 0.95rem;
     cursor: pointer;
-    transition: transform 0.2s ease;
+    transition: 0.2s ease;
 }
 
 .promo-button:hover {
     transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
 .promo-stats {
     display: grid;
     gap: 14px;
     min-width: 190px;
+    align-content: center;
 }
 
 .stat-card {
-    padding: 16px;
+    padding: 16px 20px;
     border-radius: 18px;
     background: rgba(255, 255, 255, 0.12);
     backdrop-filter: blur(6px);
@@ -107,70 +84,22 @@
 
 .stat-card strong {
     display: block;
-    font-size: 1.35rem;
+    font-size: 1.4rem;
     font-weight: 800;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
 
 .stat-card span {
-    font-size: 0.92rem;
-    color: rgba(255, 255, 255, 0.86);
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.82);
 }
 
-@media (max-width: 900px) {
-    .dashboard-page {
-        padding: 20px 16px 40px;
-    }
-
-    .promo-banner {
-        flex-direction: column;
-    }
-
-    .section-header h2 {
-        font-size: 1.6rem;
-    }
-}
-
-/* Contenedor relativo para que el botón se posicione respecto a la tarjeta */
-.auth-card-wrapper {
-    position: relative;
-    padding-top: 40px;
-    /* Espacio para que el botón no pise el contenido */
-}
-
-.back-btn {
-    position: absolute;
-    top: 100px;
-    left: 20px;
-    background: transparent;
-    border: none;
-    color: #666;
-    font-size: 0.9rem;
-    font-weight: 500;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.2s ease;
-    padding: 8px 12px;
-    border-radius: 6px;
-}
-
-.back-btn:hover {
-    color: #000;
-    background-color: rgba(0, 0, 0, 0.05);
-    transform: translateX(-4px);
-    /* Pequeño efecto de movimiento a la izquierda */
-}
-
-.back-btn:active {
-    transform: translateX(-2px) scale(0.98);
-}
-
+/* SKELETONS */
 .skeleton-banner {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 24px;
     padding: 36px 40px;
     border-radius: 28px;
     background: #e2e8f0;
@@ -178,6 +107,9 @@
 }
 
 .skeleton-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     margin-bottom: 40px;
 }
 
@@ -194,9 +126,35 @@
 }
 
 .skeleton-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
     background: white;
     border-radius: 18px;
     padding: 12px;
     min-width: 260px;
     box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .dashboard-page {
+        padding: 20px 16px 40px;
+    }
+
+    .promo-banner {
+        flex-direction: column;
+        padding: 28px 24px;
+    }
+
+    .promo-stats {
+        grid-template-columns: repeat(3, 1fr);
+        min-width: unset;
+    }
+}
+
+@media (max-width: 600px) {
+    .promo-stats {
+        grid-template-columns: 1fr;
+    }
 }

@@ -1,27 +1,99 @@
 .not-found-page {
-    min-height: 60vh;
+    min-height: calc(100vh - 64px);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 16px;
     text-align: center;
+    padding: 40px 24px;
+    background: linear-gradient(135deg, #f0f4ff 0%, #f5f3ff 100%);
 }
 
-.not-found-page h1 {
+.not-found-visual {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.not-found-number {
+    font-size: 7rem;
+    font-weight: 900;
+    color: #2563eb;
+    line-height: 1;
+    opacity: 0.15;
+}
+
+.not-found-icon {
     font-size: 5rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+h1 {
+    font-size: 2rem;
     font-weight: 800;
     color: #0f172a;
     margin: 0;
 }
 
-.not-found-page p {
+p {
     color: #64748b;
-    font-size: 1.2rem;
+    font-size: 1.05rem;
+    max-width: 360px;
+    line-height: 1.6;
+    margin: 0;
 }
 
-.not-found-page a {
-    color: #2563eb;
+.not-found-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn-primary {
+    padding: 12px 24px;
+    border-radius: 12px;
+    background: #2563eb;
+    color: white;
     font-weight: 700;
+    font-size: 0.95rem;
     text-decoration: none;
+    transition: 0.2s ease;
+}
+
+.btn-primary:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+.btn-ghost {
+    padding: 12px 24px;
+    border-radius: 12px;
+    border: 1.5px solid #e2e8f0;
+    background: white;
+    color: #334155;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+.btn-ghost:hover {
+    border-color: #2563eb;
+    color: #2563eb;
 }

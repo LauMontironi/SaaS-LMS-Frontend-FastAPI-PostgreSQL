@@ -1,45 +1,38 @@
-<button type="button" class="back-btn" (click)="goBack()">
-    ← Back
-</button>
-
 <div class="dashboard-page">
 
     @if (isLoading()) {
 
-    <!-- SKELETON WELCOME BANNER -->
     <div class="skeleton-banner">
         <div>
-            <p-skeleton width="120px" height="14px" styleClass="mb-2"></p-skeleton>
-            <p-skeleton width="280px" height="32px" styleClass="mb-2"></p-skeleton>
+            <p-skeleton width="120px" height="14px"></p-skeleton>
+            <p-skeleton width="280px" height="32px"></p-skeleton>
             <p-skeleton width="220px" height="16px"></p-skeleton>
         </div>
         <p-skeleton shape="circle" size="76px"></p-skeleton>
     </div>
 
-    <!-- SKELETON CARDS ROW -->
     <div class="skeleton-section">
-        <p-skeleton width="200px" height="28px" styleClass="mb-3"></p-skeleton>
+        <p-skeleton width="200px" height="28px"></p-skeleton>
         <div class="skeleton-row">
             @for (item of [1,2,3]; track item) {
             <div class="skeleton-card">
-                <p-skeleton width="100%" height="160px" styleClass="mb-2"></p-skeleton>
-                <p-skeleton width="60%" height="14px" styleClass="mb-1"></p-skeleton>
-                <p-skeleton width="90%" height="18px" styleClass="mb-1"></p-skeleton>
+                <p-skeleton width="100%" height="160px"></p-skeleton>
+                <p-skeleton width="60%" height="14px"></p-skeleton>
+                <p-skeleton width="90%" height="18px"></p-skeleton>
                 <p-skeleton width="75%" height="14px"></p-skeleton>
             </div>
             }
         </div>
     </div>
 
-    <!-- SKELETON GRID -->
     <div class="skeleton-section">
-        <p-skeleton width="200px" height="28px" styleClass="mb-3"></p-skeleton>
+        <p-skeleton width="200px" height="28px"></p-skeleton>
         <div class="skeleton-grid">
             @for (item of [1,2,3,4]; track item) {
             <div class="skeleton-card">
-                <p-skeleton width="100%" height="160px" styleClass="mb-2"></p-skeleton>
-                <p-skeleton width="60%" height="14px" styleClass="mb-1"></p-skeleton>
-                <p-skeleton width="90%" height="18px" styleClass="mb-1"></p-skeleton>
+                <p-skeleton width="100%" height="160px"></p-skeleton>
+                <p-skeleton width="60%" height="14px"></p-skeleton>
+                <p-skeleton width="90%" height="18px"></p-skeleton>
                 <p-skeleton width="75%" height="14px"></p-skeleton>
             </div>
             }
@@ -50,13 +43,14 @@
 
     <app-welcome-banner [user]="user()"></app-welcome-banner>
 
-    <app-continue-learning [courses]="continueLearning()"
-        (exploreCourses)="scrollToRecommended()"></app-continue-learning>
+    <app-continue-learning [courses]="continueLearning()" (exploreCourses)="scrollToRecommended()">
+    </app-continue-learning>
 
     <app-category-ticker></app-category-ticker>
 
     <app-course-filters [isOpen]="showFilters()" [categories]="categories()" (filtersChange)="applyFilters($event)"
-        (closePanel)="closeFilters()"></app-course-filters>
+        (closePanel)="closeFilters()">
+    </app-course-filters>
 
     <section class="promo-banner">
         <div class="promo-text">
@@ -78,15 +72,15 @@
     <app-trusted-brands></app-trusted-brands>
 
     <div id="what-to-learn-next">
-        <app-course-section title="What to learn next" subtitle="Recommended for you"
-            [courses]="recommendedCourses()"></app-course-section>
+        <app-course-section title="What to learn next" subtitle="Recommended for you" [courses]="recommendedCourses()">
+        </app-course-section>
     </div>
 
-    <app-course-section title="Trending courses" subtitle="Popular right now"
-        [courses]="trendingCourses()"></app-course-section>
+    <app-course-section title="Trending courses" subtitle="Popular right now" [courses]="trendingCourses()">
+    </app-course-section>
 
-    <app-course-section title="All courses" subtitle="Browse the full catalog"
-        [courses]="filteredCourses()"></app-course-section>
+    <app-course-section title="All courses" subtitle="Browse the full catalog" [courses]="filteredCourses()">
+    </app-course-section>
 
     }
 

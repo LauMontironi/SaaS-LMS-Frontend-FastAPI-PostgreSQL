@@ -11,11 +11,11 @@
     justify-content: space-between;
     align-items: center;
     gap: 24px;
-    padding: 32px;
+    padding: 36px 40px;
     border-radius: 28px;
-    background: linear-gradient(135deg, #111827, #1e293b, #334155);
+    background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
     color: white;
-    margin-bottom: 30px;
+    margin-bottom: 32px;
     box-shadow: 0 18px 40px rgba(15, 23, 42, 0.2);
 }
 
@@ -29,7 +29,7 @@
 }
 
 .admin-hero h1 {
-    margin: 0 0 12px;
+    margin: 0 0 10px;
     font-size: 2.2rem;
     font-weight: 800;
     line-height: 1.1;
@@ -37,8 +37,7 @@
 
 .admin-hero p {
     margin: 0;
-    max-width: 680px;
-    color: rgba(255, 255, 255, 0.86);
+    color: rgba(255, 255, 255, 0.82);
     line-height: 1.6;
 }
 
@@ -49,45 +48,35 @@
 .admin-btn {
     display: inline-block;
     text-decoration: none;
-    border-radius: 999px;
-    padding: 13px 18px;
+    border-radius: 12px;
+    padding: 13px 20px;
     background: #60a5fa;
     color: #0f172a;
     font-weight: 800;
-    box-shadow: 0 10px 20px rgba(96, 165, 250, 0.25);
+    font-size: 0.95rem;
+    transition: 0.2s ease;
+    box-shadow: 0 8px 20px rgba(96, 165, 250, 0.25);
 }
 
 .admin-btn:hover {
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(96, 165, 250, 0.35);
+}
+
+.loading-text {
+    color: #64748b;
+    font-size: 0.95rem;
+    padding: 20px 0;
 }
 
 @media (max-width: 768px) {
     .admin-hero {
         flex-direction: column;
         align-items: flex-start;
+        padding: 28px 24px;
     }
 
     .admin-hero h1 {
         font-size: 1.8rem;
     }
-}
-
-.back-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    border: none;
-    border-radius: 999px;
-    padding: 10px 16px;
-    background: #e2e8f0;
-    color: #0f172a;
-    font-weight: 700;
-    cursor: pointer;
-    margin-bottom: 18px;
-    transition: 0.2s ease;
-}
-
-.back-btn:hover {
-    background: #cbd5e1;
-    transform: translateY(-1px);
 }

@@ -1,32 +1,28 @@
 <div class="admin-page">
 
-    <button type="button" class="back-btn" (click)="goBack()">
-        ← Back
-    </button>
-
     <section class="page-header">
         <div>
             <p class="admin-eyebrow">Admin courses</p>
             <h1>Manage courses</h1>
         </div>
-
         <button type="button" class="primary-btn" (click)="openCreateForm()">
-            Create course
+            + Create course
         </button>
     </section>
 
     @if (showForm()) {
     <app-admin-course-form [course]="editingCourse()" [instructorId]="instructorId" (saveCourse)="saveCourse($event)"
-        (cancelForm)="closeForm()"></app-admin-course-form>
+        (cancelForm)="closeForm()">
+    </app-admin-course-form>
     }
 
     @if (showLessonsManager()) {
-    <app-admin-lessons-manager [course]="selectedCourseForLessons()"
-        (closeManager)="closeLessonsManager()"></app-admin-lessons-manager>
+    <app-admin-lessons-manager [course]="selectedCourseForLessons()" (closeManager)="closeLessonsManager()">
+    </app-admin-lessons-manager>
     }
 
     @if (isLoading()) {
-    <p>Loading courses...</p>
+    <div class="loading-text">Loading courses...</div>
     } @else {
     <div class="courses-table-wrapper">
         <table class="courses-table">
@@ -41,25 +37,38 @@
                     <th>Actions</th>
                 </tr>
             </thead>
-
             <tbody>
                 @for (course of courses(); track course.id) {
                 <tr>
-                    <td>{{ course.title }}</td>
-                    <td>{{ course.level }}</td>
-                    <td>{{ course.status }}</td>
-                    <td>{{ course.is_featured ? 'Yes' : 'No' }}</td>
-                    <td>{{ course.is_active ? 'Yes' : 'No' }}</td>
-                    <td>{{ course.popularity_score }}</td>
+                    <td class="td-title">{{ course.title }}</td>
+                    <td>
+                        <span class="badge badge-level">{{ course.level }}</span>
+                    </td>
+                    <td>
+                        <span class="badge" [class.badge-published]="course.status === 'published'"
+                            [class.badge-draft]="course.status === 'draft'">
+                            {{ course.status }}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="badge" [class.badge-yes]="course.is_featured"
+                            [class.badge-no]="!course.is_featured">
+                            {{ course.is_featured ? '★ Featured' : 'No' }}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="badge" [class.badge-yes]="course.is_active" [class.badge-no]="!course.is_active">
+                            {{ course.is_active ? '✓ Active' : 'Inactive' }}
+                        </span>
+                    </td>
+                    <td class="td-score">{{ course.popularity_score }}</td>
                     <td class="actions-cell">
                         <button type="button" class="table-btn secondary" (click)="openEditForm(course)">
                             Edit
                         </button>
-
                         <button type="button" class="table-btn secondary" (click)="openLessonsManager(course)">
                             Lessons
                         </button>
-
                         <button type="button" class="table-btn danger" (click)="deleteCourse(course.id)">
                             Delete
                         </button>

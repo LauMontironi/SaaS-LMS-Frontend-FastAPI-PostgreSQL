@@ -1,29 +1,52 @@
 <nav class="navbar">
 
-    <div class="brand">
+    <a class="brand" routerLink="/landing">
         <img src="Logo.jpg" alt="CourseFlow logo" class="brand-logo">
-
-        <div class="brand-copy">
-            <h1>CourseFlow</h1>
-            <p>
-                Discover courses that match your flow.
-                Learn AI, backend, frontend and more.
-            </p>
-        </div>
-    </div>
+        <span class="brand-name">CourseFlow</span>
+    </a>
 
     <div class="nav-actions">
         @if (isLoggedIn()) {
         @if (currentUser()?.role === 'admin') {
-        <a class="nav-link" routerLink="/admin">Admin</a>
+        <a class="nav-link" routerLink="/admin">Admin panel</a>
         }
-        <a class="nav-link" routerLink="/profile">My profile</a>
-        <button type="button" class="nav-btn logout-btn" (click)="logout()">
-            Logout
-        </button>
+        <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+
+        <div class="user-menu" (click)="toggleDropdown()" [class.open]="dropdownOpen()">
+            <div class="user-avatar">
+                @if (currentUser()?.avatar_url) {
+                <img [src]="currentUser()!.avatar_url" [alt]="currentUser()!.first_name" />
+                } @else {
+                <span>{{ initials() }}</span>
+                }
+            </div>
+            <span class="user-name">{{ currentUser()?.first_name }}</span>
+            <span class="chevron">▾</span>
+
+            @if (dropdownOpen()) {
+            <div class="dropdown" (click)="$event.stopPropagation()">
+                <div class="dropdown-header">
+                    <strong>{{ currentUser()?.first_name }} {{ currentUser()?.last_name }}</strong>
+                    <span>{{ currentUser()?.email }}</span>
+                </div>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" routerLink="/profile" (click)="closeDropdown()">
+                    👤 My profile
+                </a>
+                <a class="dropdown-item" routerLink="/dashboard" (click)="closeDropdown()">
+                    📚 My courses
+                </a>
+                <div class="dropdown-divider"></div>
+                <button type="button" class="dropdown-item logout" (click)="logout()">
+                    🚪 Logout
+                </button>
+            </div>
+            }
+        </div>
+
         } @else {
         <a class="nav-link" routerLink="/login">Login</a>
-        <a class="nav-link nav-link-primary" routerLink="/register">Register</a>
+        <a class="nav-link nav-link-primary" routerLink="/register">Get started</a>
         }
     </div>
 

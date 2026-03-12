@@ -1,25 +1,18 @@
 <div class="admin-page">
 
-    <button type="button" class="back-btn" (click)="goBack()">
-        ← Back
-    </button>
-
     <section class="admin-hero">
         <div>
             <p class="admin-eyebrow">Admin panel</p>
             <h1>LMS management dashboard</h1>
-            <p>
-                Manage courses, lessons and platform content from one place.
-            </p>
+            <p>Manage courses, lessons and platform content from one place.</p>
         </div>
-
         <div class="admin-actions">
-            <a routerLink="/admin/courses" class="admin-btn">Manage courses</a>
+            <a routerLink="/admin/courses" class="admin-btn">Manage courses →</a>
         </div>
     </section>
 
     @if (isLoading()) {
-    <p>Loading admin stats...</p>
+    <p class="loading-text">Loading admin stats...</p>
     } @else if (stats(); as currentStats) {
     <app-admin-stats-cards [stats]="currentStats"></app-admin-stats-cards>
     }
